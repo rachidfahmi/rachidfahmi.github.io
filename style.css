@@ -1,0 +1,279 @@
+/* 80s Cyberpunk Style */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* CRT Monitor Effect */
+.crt {
+    position: relative;
+    min-height: 100vh;
+    background: #000;
+    padding: 20px;
+}
+
+.crt::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.neon-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5em;
+    color: #00ff00;
+    text-shadow: 
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 20px #00ff00,
+        0 0 40px #0ff;
+    margin-bottom: 10px;
+    animation: neon-flicker 2s infinite alternate;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+/* Section Styles */
+.section-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    color: #ffff00;
+    text-shadow: 0 0 10px #ffff00;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff00ff;
+    padding-bottom: 5px;
+}
+
+.content-box {
+    background: rgba(0, 0, 0, 0.7);
+    border: 3px solid #00ff00;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+/* Feature List */
+.feature-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.feature-item {
+    background: rgba(255, 0, 255, 0.2);
+    border: 1px solid #ff00ff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Buttons */
+.pixel-button {
+    display: inline-block;
+    background: #ff00ff;
+    color: #000;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 0.3s;
+    margin: 10px 0;
+}
+
+.pixel-button:hover {
+    background: #ffff00;
+    color: #000;
+    box-shadow: 0 0 20px #ffff00;
+    transform: translateY(-2px);
+}
+
+.download-button {
+    background: #00ff00;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2em;
+    margin: 20px 0;
+    border: 3px solid #ffff00;
+}
+
+/* Pixel Border */
+.pixel-border {
+    height: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        #00ff00,
+        #00ff00 10px,
+        #ff00ff 10px,
+        #ff00ff 20px
+    );
+    margin: 20px 0;
+}
+
+/* Animations */
+@keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0 0 5px #00ff00,
+            0 0 10px #00ff00,
+            0 0 20px #00ff00,
+            0 0 40px #0ff;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Floating Pixels */
+.floating-pixels {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.pixel {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #00ff00;
+    animation: float 6s infinite linear;
+}
+
+.pixel:nth-child(1) { left: 10%; animation-delay: 0s; }
+.pixel:nth-child(2) { left: 20%; animation-delay: 1.2s; }
+.pixel:nth-child(3) { left: 30%; animation-delay: 2.4s; }
+.pixel:nth-child(4) { left: 70%; animation-delay: 3.6s; }
+.pixel:nth-child(5) { left: 90%; animation-delay: 4.8s; }
+
+@keyframes float {
+    0% { 
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { 
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.copyright {
+    color: #888;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.terminal-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7em;
+    color: #00ff00;
+}
+
+.email {
+    color: #ffff00;
+    font-weight: bold;
+}
+
+.small-text {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .neon-text {
+        font-size: 1.5em;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .content-box {
+        padding: 15px;
+    }
+}
